@@ -18,21 +18,21 @@ export const wedding = {
 
   ceremony: {
     /** As you'd like it written, e.g. 'Saturday, 14 February 2027'. */
-    date: '',
+    date: '22 November 2026',
     /** e.g. '8:00 PM' */
-    time: '',
+    time: '11:00AM',
     /** e.g. 'EST (UTC−5)' or 'Server time (UTC)' */
-    timezone: '',
+    timezone: 'GMT+8',
     /**
      * Optional. The exact start as an ISO date-time WITH its UTC offset,
      * e.g. '2027-02-14T20:00:00-05:00'. When set, guests also see the
      * start time converted to their own time zone.
      */
-    startsAt: '',
+    startsAt: '11.00AM',
     /** e.g. 'Aether', 'Light', 'Mana' */
-    dataCenter: '',
+    dataCenter: 'Elemental',
     /** e.g. 'Gilgamesh' */
-    world: '',
+    world: 'Kujata',
     /** Where guests should gather, e.g. a venue or housing ward. */
     venue: '',
     /** Optional extra line under the venue, e.g. 'Please arrive 15 minutes early.' */
