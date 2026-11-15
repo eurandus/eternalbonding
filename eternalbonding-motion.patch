@@ -1,0 +1,122 @@
+diff --git a/src/index.css b/src/index.css
+index e5272fd..3c9b157 100644
+--- a/src/index.css
++++ b/src/index.css
+@@ -17,6 +17,10 @@
+   --d: clamp(250px, min(84vw, 52svh), 430px);
+   --cord: clamp(56px, 9svh, 84px);
+ 
++  /* motion tokens (Emil Kowalski standards) */
++  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
++  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
++
+   color-scheme: light;
+ }
+ 
+@@ -28,6 +32,7 @@
+ 
+ html {
+   -webkit-text-size-adjust: 100%;
++  -webkit-tap-highlight-color: transparent;
+ }
+ 
+ body {
+@@ -83,12 +88,23 @@ main,
+   border: 1px solid var(--gold);
+   border-radius: 999px;
+   cursor: pointer;
+-  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+-  -webkit-tap-highlight-color: transparent;
++  transition:
++    background-color 200ms ease,
++    border-color 200ms ease,
++    color 200ms ease,
++    transform 160ms var(--ease-out);
++  touch-action: manipulation;
++  user-select: none;
++  -webkit-user-select: none;
+ }
+-.soft-button:hover {
+-  background: var(--cream);
+-  border-color: var(--gold-deep);
++.soft-button:active {
++  transform: scale(0.97);
++}
++@media (hover: hover) and (pointer: fine) {
++  .soft-button:hover {
++    background: var(--cream);
++    border-color: var(--gold-deep);
++  }
+ }
+ .soft-button:focus-visible {
+   outline: 2px solid var(--rose-deep);
+@@ -104,9 +120,11 @@ main,
+   color: var(--cream);
+   padding-inline: 1.7rem;
+ }
+-.soft-button--solid:hover {
+-  background: #74495a;
+-  border-color: #74495a;
++@media (hover: hover) and (pointer: fine) {
++  .soft-button--solid:hover {
++    background: #74495a;
++    border-color: #74495a;
++  }
+ }
+ 
+ /* ───────── section A: welcome ───────── */
+@@ -169,6 +187,7 @@ main,
+   width: var(--d);
+   height: calc(var(--cord) + var(--d));
+   transform-origin: 50% 0;
++  will-change: transform;
+ }
+ 
+ .ornament-pin {
+@@ -229,6 +248,7 @@ main,
+   position: absolute;
+   inset: 0;
+   transform-style: preserve-3d;
++  will-change: transform;
+ }
+ 
+ .ornament-edge {
+@@ -454,11 +474,14 @@ main,
+   font-style: italic;
+   font-size: 1.05rem;
+   color: var(--ink);
+-  transition: opacity 0.6s;
++  transition: opacity 300ms var(--ease-out);
+ }
+ .ornament-hint.is-quiet {
+   opacity: 0.6;
+ }
++.ornament-hint.is-quiet .ornament-hint-arrows {
++  animation: none;
++}
+ .ornament-hint-arrows {
+   width: 7.5rem;
+   height: 1rem;
+@@ -674,12 +697,18 @@ main,
+   .petals {
+     display: none;
+   }
+-  .twinkle,
+   .ornament-hint-arrows {
+     animation: none;
+   }
+-  .soft-button,
+-  .ornament-hint {
+-    transition: none;
++  .twinkle {
++    animation-name: twinkle-fade; /* opacity only, no scaling */
+   }
++  .soft-button:active {
++    transform: none;
++  }
++}
++
++@keyframes twinkle-fade {
++  from { opacity: 0.3; }
++  to { opacity: 0.75; }
+ }
