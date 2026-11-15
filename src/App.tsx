@@ -34,7 +34,7 @@ export default function App() {
           <path d="M130 8 Q 131 11 134 12 Q 131 13 130 16 Q 129 13 126 12 Q 129 11 130 8 Z" fill="#D99AA9" />
         </svg>
         <blockquote className="closing-quote">
-          <p>Across every realm, in every lifetime, I would still choose you.</p>
+          <p>Across every realm, through every lifetime, my soul will always find uwu.</p>
         </blockquote>
         <p className="closing-signature">
           {signature} <span aria-label="with love">♡</span>
