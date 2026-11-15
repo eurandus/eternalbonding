@@ -320,7 +320,7 @@ main,
 .front-portrait {
   position: absolute;
   left: 50%;
-  top: 40%;     /* was 44% */
+  top: 50%;     /* was 44% */
   width: 50%;   /* was 62% */
   transform: translateX(-50%);
   pointer-events: none;
